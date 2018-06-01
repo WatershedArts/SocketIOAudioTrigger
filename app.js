@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path')
 var http = require("http");
-var socketio = require("socket.io");
+var socketIO = require("socket.io");
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5000
 const SOCKET_PORT = process.env.SOCKET_PORT || 5100
 
 var app = express();
-var server = require('http').Server(app);
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -43,7 +43,7 @@ app.get('/wolf', function(req, res, next) {
 
 
 
-var io = socketio.listen(server);
+var io = socketIO.listen(app);
 io.sockets.on('connection', function (socket) {
     socket.emit('message',"Hello World from the Server");
 
@@ -61,6 +61,8 @@ io.sockets.on('connection', function (socket) {
       socket.broadcast.emit('sheep',data);
     });
 });
+
+setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
