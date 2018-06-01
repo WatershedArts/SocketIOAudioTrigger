@@ -10,37 +10,47 @@ var routes = require('./routes/index');
 const PORT = process.env.PORT || 5000
 const SOCKET_PORT = process.env.SOCKET_PORT || 5100
 
-var app = express();
-
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use('/socket.io', express.static('node_modules/socket.io-client/dist'));
-app.use('/jquery', express.static('node_modules/jquery/dist'));
-app.use('/bootstrap', express.static('node_modules/bootstrap/'));
-
-app.use(express.static(path.join(__dirname, 'public')));
-
-
-app.set('view engine', 'jade'); // converts Jade to HTML before sending
-app.set('views', path.join(__dirname, 'views'));
-
-  
-app.get('/', (req, res) => res.render('index'))
-
-app.get('/shepard', function(req, res, next) {
+const app = express()
+.use(logger('dev'))
+.use(bodyParser.json())
+.use(bodyParser.urlencoded({ extended: false }))
+.use(cookieParser())
+.use('/socket.io', express.static('node_modules/socket.io-client/dist'))
+.use('/jquery', express.static('node_modules/jquery/dist'))
+.use('/bootstrap', express.static('node_modules/bootstrap/'))
+.use(express.static(path.join(__dirname, 'public')))
+.set('view engine', 'jade')
+.set('views', path.join(__dirname, 'views'))
+.get('/', (req, res) => res.render('index'))
+.get('/shepard', function(req, res, next) {
   res.render('shepard', { title: 'Shepard' });
-});
-
-app.get('/sheep', function(req, res, next) {
+})
+.get('/sheep', function(req, res, next) {
   res.render('sheep', { title: 'Sheep' });
-});
-
-app.get('/wolf', function(req, res, next) {
+})
+.get('/wolf', function(req, res, next) {
   res.render('wolf', { title: 'Wolf' });
-});
-
+})
+.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
+})
+.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
+})
+.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+})
+.listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
 var io = socketIO.listen(app);
@@ -65,37 +75,37 @@ io.sockets.on('connection', function (socket) {
 setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
+// app.use(function(req, res, next) {
+//   var err = new Error('Not Found');
+//   err.status = 404;
+//   next(err);
+// });
 
 // error handlers
 
 // development error handler
 // will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}
+// if (app.get('env') === 'development') {
+//   app.use(function(err, req, res, next) {
+//     res.status(err.status || 500);
+//     res.render('error', {
+//       message: err.message,
+//       error: err
+//     });
+//   });
+// }
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
-});
+// .use(function(err, req, res, next) {
+//   res.status(err.status || 500);
+//   res.render('error', {
+//     message: err.message,
+//     error: {}
+//   });
+// });
 
-app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
 
 module.exports = app;
 
