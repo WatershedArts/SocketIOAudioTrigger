@@ -1,12 +1,12 @@
-var socket = io.connect('https://rocky-sierra-32695.herokuapp.com:5000');
+var socket = io.connect('//:5000');
 
-socket.emit('alive','Sheep');
+socket.emit('alive','Flock');
 
 socket.on('message',function(data) {
     console.log(data);
 });
 
-socket.on('sheep',function(data) {
+socket.on('flock',function(data) {
     console.log("Received Instruction: " +data);
     if(data == "Track 1") {
         var aud = document.getElementById('track1');

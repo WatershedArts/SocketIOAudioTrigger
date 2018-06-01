@@ -1,4 +1,4 @@
-var socket = io.connect('https://rocky-sierra-32695.herokuapp.com:5000');
+var socket = io.connect('//:5000');
 
 socket.emit('alive','Shepard');
 
@@ -22,17 +22,17 @@ $('#wolf3').click(function() {
     socket.emit('instruction-for-wolf','Track 2');
 });
 
-$('#sheep1').click(function() {
-    console.log("Triggered Sheep Track 1");
-    socket.emit('instruction-for-sheep','Track 1');
+$('#flock1').click(function() {
+    console.log("Triggered Flock Track 1");
+    socket.emit('instruction-for-flock','Track 1');
 });
 
-$('#sheep2').click(function() {
-    console.log("Triggered Sheep Track 2");
-    socket.emit('instruction-for-sheep','Track 2');
+$('#flock2').click(function() {
+    console.log("Triggered Flock Track 2");
+    socket.emit('instruction-for-flock','Track 2');
 });
 
-$('#sheep3').click(function() {
-    console.log("Triggered Sheep Track 3");
-    socket.emit('instruction-for-sheep','Track 3');
+$('#flock3').click(function() {
+    console.log("Triggered Flock Track 3");
+    socket.emit('instruction-for-flock','Track 3');
 });
