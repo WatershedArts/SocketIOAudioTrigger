@@ -1,4 +1,4 @@
-var socket = io.connect('//:5000');
+var socket = io.connect('https://rocky-sierra-32695.herokuapp.com:5000');
 
 socket.emit('alive','Shepard');
 

@@ -55,10 +55,12 @@ const app = express()
 
 var io = socketIO.listen(app);
 io.sockets.on('connection', function (socket) {
-    socket.emit('message',"Hello World from the Server");
-
+    console.log("Clients... Clients everywhere");
+    
+    socket.on('disconnect', () => console.log('Client disconnected'));
+    
     socket.on('alive', function(data) {
-        console.log(data + " is Alive");
+      console.log(data + " is Alive");
     });
 
     socket.on('instruction-for-wolf', function(data) {
@@ -70,7 +72,12 @@ io.sockets.on('connection', function (socket) {
       console.log("Message for the Sheep Trigger " + data);
       socket.broadcast.emit('sheep',data);
     });
+
 });
+
+
+
+
 
 setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
 
