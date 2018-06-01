@@ -1,4 +1,4 @@
-var socket = io.connect('//:5100');
+var socket = io.connect('//:5000');
 
 socket.emit('alive','Shepard');
 

@@ -1,4 +1,4 @@
-var socket = io.connect('//:5100');
+var socket = io.connect('//:5000');
 
 socket.emit('alive','Sheep');
 
@@ -8,7 +8,6 @@ socket.on('message',function(data) {
 
 socket.on('sheep',function(data) {
     console.log("Received Instruction: " +data);
-
     if(data == "Track 1") {
         var aud = document.getElementById('track1');
         aud.load();

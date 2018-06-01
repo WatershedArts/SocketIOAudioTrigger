@@ -93,7 +93,6 @@ app.use(function(err, req, res, next) {
   });
 });
 
-server.listen(SOCKET_PORT, () => console.log(`Socket IO Listening on ${SOCKET_PORT}`));
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 module.exports = app;
