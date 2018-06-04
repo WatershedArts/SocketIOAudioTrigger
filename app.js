@@ -1,12 +1,13 @@
-const express = require('express');
+const express = require('express')
 const path = require('path')
-
+var http = require("http");
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 
 const PORT = 4200;
+const SOCKET_PORT = process.env.SOCKET_PORT || 5100;
 
 const app = express();
 app.use(logger('dev'));
@@ -50,8 +51,8 @@ if (app.get('env') === 'development') {
   });
 }
 
-var http = require("http").Server(app);
-var socketIO = require("socket.io")(http);
+var server = app.listen(PORT);
+var socketIO = require("socket.io").listen(server);
 
 socketIO.sockets.on('connection', function (socket) {
     console.log("Clients... Clients everywhere");
@@ -72,11 +73,6 @@ socketIO.sockets.on('connection', function (socket) {
       socket.broadcast.emit('flock',data);
     });
 });
-
-http.listen(PORT, () => {
-    console.log("Listening on Port " ,PORT);
-});
-
 
 setInterval(() => socketIO.emit('time', new Date().toTimeString()), 1000);
 
