@@ -2,20 +2,16 @@ var express = require('express');
 var router = express.Router();
 router.get('/', (req, res) => res.render('index'));
 
-router.get('/shepard', function(req, res, next) {
-  res.render('shepard', { title: 'Shepard' });
+router.get('/controller', function(req, res, next) {
+  res.render('controller', { title: 'Controller' });
 });
 
-router.get('/flock', function(req, res, next) {
-  res.render('flock', { title: 'Flock' });
+router.get('/listener1', function(req, res, next) {
+  res.render('listener1', { title: 'Listener 1' });
 });
 
-router.get('/wolf', function(req, res, next) {
-  res.render('wolf', { title: 'Wolf' });
-});
-
-router.get('/dev', function(req, res, next) {
-  res.render('dev', { title: 'Dev Page' });
+router.get('/listener2', function(req, res, next) {
+  res.render('listener2', { title: 'Listener 2' });
 });
 
 module.exports = router;

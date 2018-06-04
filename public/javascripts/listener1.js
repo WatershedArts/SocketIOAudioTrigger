@@ -2,7 +2,7 @@ var trackIDs = [];
 
 $.getJSON('audio/config.json', (data,status) => {
     console.log(data);
-    $.each(data['wolf'],(key,tracks) => {
+    $.each(data['listener1'],(key,tracks) => {
         var dd = '<audio id="'+tracks.trackname+'" preload="auto" controls="controls">' +
           '<source src="'+tracks.trackpath+'" type="audio/mp3"/>' +
         '</audio>';
@@ -15,12 +15,12 @@ $.getJSON('audio/config.json', (data,status) => {
 
 var socket = io.connect();
 
-socket.emit('alive','Wolf');
+socket.emit('alive','Listener 1');
 socket.on('message',function(data) {
     console.log(data);
 });
 
-socket.on('wolf',function(data) {
+socket.on('listener1',function(data) {
     console.log("Received Instruction: " +data);
 
     trackIDs.forEach(trackname => {

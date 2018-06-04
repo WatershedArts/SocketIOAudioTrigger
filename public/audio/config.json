@@ -1,5 +1,5 @@
 {
-    "wolf": [
+    "listener1": [
             {
                 "trackpath": "/audio/Violet.mp3",
                 "trackname": "Violet"
@@ -9,7 +9,7 @@
                 "trackname": "1085!"
             }
     ],
-    "flock": [
+    "listener2": [
             {
                 "trackpath": "/audio/1085.mp3",
                 "trackname": "1085!"

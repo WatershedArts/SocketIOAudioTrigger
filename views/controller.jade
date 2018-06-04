@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    .container(align='center')
+        h1= title
+        h3 Listener 1
+        #listener1tracks.btn-group-vertical(style='padding: 25px;')
+        h3 Listener 2
+        #listener2tracks.btn-group-vertical(style='padding: 25px;')
+
+    
+        div#events
+
+    
+    script(src='/socket.io/socket.io.js')
+    script(src='/javascripts/controller.js')
+        

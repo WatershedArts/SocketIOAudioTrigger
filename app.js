@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 
 const PORT = process.env.PORT || 3000;
-const SOCKET_PORT = process.env.SOCKET_PORT || 5100;
 
 const app = express();
 app.use(logger('dev'));
@@ -63,14 +62,14 @@ socketIO.sockets.on('connection', function (socket) {
       console.log(data + " is Alive");
     });
 
-    socket.on('instruction-for-wolf', function(data) {
-      console.log("Message for the Wolf Trigger " + data);
-      socket.broadcast.emit('wolf',data);
+    socket.on('instruction-for-listener1', function(data) {
+      console.log("Message for the Listener 1 Trigger " + data);
+      socket.broadcast.emit('listener1',data);
     });
 
-    socket.on('instruction-for-flock', function(data) {
-      console.log("Message for the Flock Trigger " + data);
-      socket.broadcast.emit('flock',data);
+    socket.on('instruction-for-listener2', function(data) {
+      console.log("Message for the Listener 2 Trigger " + data);
+      socket.broadcast.emit('listener2',data);
     });
 });
 
