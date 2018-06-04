@@ -14,7 +14,9 @@ block content
       br
       audio#track3(preload='auto', controls)
         source(src='audio/rooster.mp3', type='audio/mp3')
-    ul#events
+    
+    p These are the triggered events from the Server 
+    ul#events(style='list-style-type: none;')
   
   script(src='/socket.io/socket.io.js')
   script(src='/javascripts/flock.js')
