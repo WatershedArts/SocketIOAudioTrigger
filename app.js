@@ -1,6 +1,6 @@
-const express = require('express')
+const express = require('express');
 const path = require('path')
-var http = require("http");
+
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -51,8 +51,8 @@ if (app.get('env') === 'development') {
   });
 }
 
-var server = http.createServer(app);
-var socketIO = require("socket.io").listen(server);
+var http = require("http").Server(app);
+var socketIO = require("socket.io")(http);
 
 socketIO.sockets.on('connection', function (socket) {
     console.log("Clients... Clients everywhere");
@@ -76,6 +76,6 @@ socketIO.sockets.on('connection', function (socket) {
 
 setInterval(() => socketIO.emit('time', new Date().toTimeString()), 1000);
 
-server.listen(PORT, () => console.log(`Listening on ${PORT}`));
+http.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 module.exports = app;
