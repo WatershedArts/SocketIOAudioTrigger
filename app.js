@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 
-const PORT = 4200;
+const PORT = process.env.SOCKET_PORT || 4200;
 const SOCKET_PORT = process.env.SOCKET_PORT || 5100;
 
 const app = express();
