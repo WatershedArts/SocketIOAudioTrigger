@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 
-const PORT = 4200;
+const PORT = process.env.PORT || 4200;
 const SOCKET_PORT = process.env.SOCKET_PORT || 5100;
 
 const app = express();
@@ -51,7 +51,7 @@ if (app.get('env') === 'development') {
   });
 }
 
-var server = app.listen(PORT);
+var server = http.createServer(app);
 var socketIO = require("socket.io").listen(server);
 
 socketIO.sockets.on('connection', function (socket) {
@@ -76,6 +76,6 @@ socketIO.sockets.on('connection', function (socket) {
 
 setInterval(() => socketIO.emit('time', new Date().toTimeString()), 1000);
 
-// server.listen(PORT, () => console.log(`Listening on ${PORT}`));
+server.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 module.exports = app;
