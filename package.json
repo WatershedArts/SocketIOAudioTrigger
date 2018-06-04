@@ -19,5 +19,9 @@
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0",
     "socket.io": "^2.1.1"
+},
+  "engines":{
+    "node": "8.11.2",
+    "npm": "6.1.0"
   }
 }
