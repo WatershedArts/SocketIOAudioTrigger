@@ -1,4 +1,4 @@
-var socket = io.connect('https://rocky-sierra-32695.herokuapp.com:4200');
+var socket = io.connect('//:4200');
 
 socket.emit('alive','Flock');
 
