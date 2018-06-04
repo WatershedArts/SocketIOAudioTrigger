@@ -1,18 +1,18 @@
 {
     "listener1": [
             {
-                "trackpath": "/audio/Violet.mp3",
-                "trackname": "Violet"
+                "trackpath": "/audio/TrackName1.mp3",
+                "trackname": "Track Name 1"
             },
             {
-                "trackpath": "/audio/1085.mp3",
-                "trackname": "1085!"
+                "trackpath": "/audio/TrackName2.mp3",
+                "trackname": "Track Name 2"
             }
     ],
     "listener2": [
             {
-                "trackpath": "/audio/1085.mp3",
-                "trackname": "1085!"
+                "trackpath": "/audio/TrackName1.mp3",
+                "trackname": "Track Name 1"
             }
     ]
 }
