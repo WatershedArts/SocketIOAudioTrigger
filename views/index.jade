@@ -1,13 +1,19 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  
+  .container(align='center')
+    h3 NodeJs Express Socket IO Audio Trigger
+    h5 Watershed Arts Trust / Pervasive Media Studio
+    h5 by David Haylock
+    br 
+    h4 Please select your role
+    br
+    button.btn.btn-lg.btn-outline-primary.sp
+      a(href='/shepard').blt Shepard
 
-  ul
-    li
-      a(href='/shepard') Shepard
-    li
-      a(href='/wolf') Wolf
-    li
-      a(href='/flock') Flock
+    button.btn.btn-lg.btn-outline-danger.sp
+      a(href='/wolf').blt Wolf
+
+    button.btn.btn-lg.btn-outline-success.sp
+      a(href='/flock').blt Flock

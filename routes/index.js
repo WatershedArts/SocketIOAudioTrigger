@@ -7,7 +7,7 @@ router.get('/shepard', function(req, res, next) {
 });
 
 router.get('/flock', function(req, res, next) {
-  res.render('flock', { title: 'flock' });
+  res.render('flock', { title: 'Flock' });
 });
 
 router.get('/wolf', function(req, res, next) {
