@@ -1,4 +1,4 @@
-const express = require('express')();
+const express = require('express');
 const path = require('path')
 
 var logger = require('morgan');
@@ -6,8 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 
-const PORT = process.env.PORT || 4200;
-const SOCKET_PORT = process.env.SOCKET_PORT || 5100;
+const PORT = 4200;
 
 const app = express();
 app.use(logger('dev'));
