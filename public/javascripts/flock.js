@@ -27,5 +27,5 @@ socket.on('flock',function(data) {
         aud.play();
     }
 
-    $('#events').append('<p>'+data+'</p>');
+    $('#events').prepend('<li>'+data+'</li>');
 });
