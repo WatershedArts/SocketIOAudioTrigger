@@ -8,22 +8,27 @@ var routes = require('./routes/index');
 
 const PORT = process.env.PORT || 3000;
 
+// Standard Express Setup
 const app = express();
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+// Route our scripts
 app.use('/socket.io', express.static('node_modules/socket.io-client/dist'));
 app.use('/jquery', express.static('node_modules/jquery/dist'));
 app.use('/bootstrap', express.static('node_modules/bootstrap/'));
-
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Establish the routes to our pages
 app.use('/',routes);
 
+// Define the render engine
 app.set('view engine', 'jade');
 app.set('views', path.join(__dirname, 'views'));
 
+// Error Catch
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
@@ -32,6 +37,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
+// Error Catch
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
@@ -50,6 +56,8 @@ if (app.get('env') === 'development') {
   });
 }
 
+
+// Socket IO 
 var server = http.createServer(app);
 var socketIO = require("socket.io").listen(server);
 
