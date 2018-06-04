@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 80;
 const SOCKET_PORT = process.env.SOCKET_PORT || 5100;
 
 const app = express();
@@ -56,9 +56,9 @@ var socketIO = require("socket.io").listen(server);
 
 socketIO.sockets.on('connection', function (socket) {
     console.log("Clients... Clients everywhere");
-    
+
     socket.on('disconnect', () => console.log('Client disconnected'));
-    
+
     socket.on('alive', function(data) {
       console.log(data + " is Alive");
     });
