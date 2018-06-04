@@ -13,14 +13,16 @@ $.getJSON('audio/config.json', (data,status) => {
     console.log(trackIDs)
 })
 
+
+
 var socket = io.connect();
 
-socket.emit('alive','Wolf');
+socket.emit('alive','Flock');
 socket.on('message',function(data) {
     console.log(data);
 });
 
-socket.on('wolf',function(data) {
+socket.on('flock',function(data) {
     console.log("Received Instruction: " +data);
 
     trackIDs.forEach(trackname => {
@@ -32,5 +34,5 @@ socket.on('wolf',function(data) {
         }
     })
 
-    $('#events').prepend('<li>Played '+data+'</li>');
+    $('#events').prepend('<li>Played'+data+'</li>');
 });

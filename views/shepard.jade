@@ -3,14 +3,11 @@ extends layout
 block content
     .container(align='center')
         h1= title
-        .div
-            .btn-group-vertical
-                button#wolf1.btn.btn-outline-primary(type='button') Wolf 1
-                button#wolf2.btn.btn-outline-primary(type='button') Wolf 2
-                button#wolf3.btn.btn-outline-primary(type='button') Wolf 3
-                button#flock1.btn.btn-outline-primary(type='button') Sheep 1
-                button#flock2.btn.btn-outline-primary(type='button') Sheep 2
-                button#flock3.btn.btn-outline-primary(type='button') Sheep 3
+        h3 Wolf
+        #wolftracks.btn-group-vertical(style='padding: 25px;')
+        h3 Flock
+        #flocktracks.btn-group-vertical(style='padding: 25px;')
+
     
         div#events
 

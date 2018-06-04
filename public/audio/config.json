@@ -1,0 +1,18 @@
+{
+    "wolf": [
+            {
+                "trackpath": "/audio/Violet.mp3",
+                "trackname": "Violet"
+            },
+            {
+                "trackpath": "/audio/1085.mp3",
+                "trackname": "1085!"
+            }
+    ],
+    "flock": [
+            {
+                "trackpath": "/audio/1085.mp3",
+                "trackname": "1085!"
+            }
+    ]
+}

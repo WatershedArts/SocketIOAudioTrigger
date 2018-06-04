@@ -14,4 +14,8 @@ router.get('/wolf', function(req, res, next) {
   res.render('wolf', { title: 'Wolf' });
 });
 
+router.get('/dev', function(req, res, next) {
+  res.render('dev', { title: 'Dev Page' });
+});
+
 module.exports = router;

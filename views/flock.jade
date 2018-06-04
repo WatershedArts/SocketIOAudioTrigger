@@ -5,15 +5,7 @@ block content
     h1= title
     p You will need to manually start the tracks and stop them after a few seconds. This allows the server to take control of the audio players
 
-    .div
-      audio#track1(preload='auto', controls)
-        source(src='audio/1085.mp3', type='audio/mp3')
-      br
-      audio#track2(preload='auto', controls)
-        source(src='audio/Violet.mp3', type='audio/mp3')
-      br
-      audio#track3(preload='auto', controls)
-        source(src='audio/rooster.mp3', type='audio/mp3')
+    div#track
     
     p These are the triggered events from the Server 
     ul#events(style='list-style-type: none;')
